@@ -540,6 +540,36 @@ contains
          avgflag='A', long_name='atmospheric incident solar radiation', &
          ptr_gcell=clm_a2l%forc_solar)
 
+#ifdef COUP_OAS_COS
+    call add_fld1d (fname='RAM1', units='s/m', &
+         avgflag='A', long_name='aerodynamical resistance ', &
+         ptr_pft=clm3%g%l%c%p%pps%ram1)
+
+    call add_fld1d (fname='RAH1', units='s/m', &
+         avgflag='A', long_name='aerodynamical resistance ', &
+         ptr_pft=clm3%g%l%c%p%pps%rah1)
+
+    call add_fld1d (fname='T_SF', units='K',  &
+         avgflag='A', long_name='surface temperature', &
+         ptr_pft=clm3%g%l%c%p%pes%t_sf)
+
+    call add_fld1d (fname='Q_SF', units='kg/kg',  &
+         avgflag='A', long_name='surface moisture', &
+         ptr_pft=clm3%g%l%c%p%pes%q_sf)
+
+    call add_fld1d (fname='PBOT', units='kg/kg',  &
+         avgflag='A', long_name='atmospheric pressure', &
+         ptr_gcell=clm_a2l%forc_pbot)
+
+    call add_fld1d (fname='EFLX_LH_TOT', units='W/m^2', &
+         avgflag='A', long_name='total latent heat flux [+ to atm]', &
+         ptr_pft=clm3%g%l%c%p%pef%eflx_lh_tot)
+
+    call add_fld1d (fname='EFLX_SOIL_GRND', units='W/m^2', &
+         avgflag='A', long_name='soil heat flux [+ into soil]', &
+         ptr_pft=clm3%g%l%c%p%pef%eflx_soil_grnd)
+#endif
+
 #if (defined DGVM)
     ! History output of accumulation variables
 
